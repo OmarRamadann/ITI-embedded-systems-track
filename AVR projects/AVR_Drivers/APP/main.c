@@ -1,0 +1,69 @@
+#include "../MCAL/DIO/DIO_interface.h"
+#include "../MCAL/DIO/DIO_register.h"
+#include "../MCAL/Timers/Timer0/Timer0_register.h"
+#include"../HAL/LCD_Driver/LCD_interface.h"
+#include "../HAL/KeyPad_Driver/KeyPad_interface.h"
+#include "../Common/definitions.h"
+#include "../Common/Bit_Math.h"
+#include "../Common/STD_types.h"
+#include "../MCAL/Timers/Timer0/Timer0_interface.h"
+#include "../HAL/EEPROM_Driver/EEPROM_interface.h"
+#include "../RTOS/RTOS_interface.h"
+#include <util/delay.h>
+
+//void (*Timer_ptr_fn_Normal)(void)=Null;
+//void Isr_Tog_Led(void);
+Timer_Prop timer1={CTC,8,Clk64,256,1000000,1000};
+////={Normal,8,Clk8,256,1000000,0};
+ModesTimer_Prop normal1;
+//={0,0,0,0,0,0,184,0};
+Lcd_Info lcd1={DIO_GroupD,DIO_GroupD,DIO_GroupD,Pin0,Pin1,Pin2,DIO_GroupA};
+KeyPad_Info keypad1={DIO_GroupB,DIO_GroupB,DIO_GroupB,DIO_GroupB,DIO_GroupC,Pin0,Pin1,Pin2,Pin4,Pin0,Pin1,Pin2,Pin3};
+
+//static KeyPad_status Status;
+//void Isr_Time(void);
+//void Welcome (void);
+void main()
+{
+	Lcd_VoidInit(&lcd1);
+//	DIO_ErrStateSetPinDirection(DIO_GroupC, Pin0, DIO_Output);
+//	DIO_ErrStateSetPinDirection(DIO_GroupC, Pin1, DIO_Output);
+	//u8 *ptr=Null;
+	u8 x;
+	u8 y,z;
+	u8 arr[13]="welcome OMAR";
+EEPROM_voidInit();
+_delay_ms(100);
+//_delay_ms(100);
+EEPROM_Write_Byte(4,'h');
+_delay_ms(100);
+EEPROM_Write_Byte(6,'i');
+_delay_ms(100);
+EEPROM_Write_Byte(5,1);
+_delay_ms(100);
+//x = EEPROM_Read_Byte(4);
+//z= EEPROM_Read_Byte(6);
+y = EEPROM_Read_Byte(5);
+//for (u8 i=0;i<13;i++) //function to save string
+//{
+//	EEPROM_Write_Byte(i, arr[i]);
+//	_delay_ms(100);
+//}
+//
+//for (u8 i=0;i<13;i++) //function to display string
+//{
+//	Lcd_VoidSendChar(EEPROM_Read_Byte(i), &lcd1);
+////	_delay_ms(100);
+//}
+//_delay_ms(100);
+//Lcd_VoidSendChar(x, &lcd1);
+//Lcd_VoidSendChar(z, &lcd1);
+//Lcd_VoidSendNumber(x, &lcd1);
+Lcd_VoidSendNumber(y, &lcd1);
+
+
+while (1)
+{
+
+}
+}

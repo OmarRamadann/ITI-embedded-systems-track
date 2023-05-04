@@ -1,0 +1,185 @@
+/*
+ * Timer0_program.c
+ *
+ *  Created on: Apr 1, 2023
+ *      Author: hp
+ */
+//#include "Timer0_interface.h"
+
+//#include "../../../Common/STD_types.h"
+//#include "Timer0_config.h"
+
+
+//#include "Timer0_interface.h"
+//#include "../../Ext_INT/INT1/INT1_private.h"
+#include <math.h>
+#include "Timer0_private.h"
+#include "Timer0_register.h"
+#include "Timer0_config.h"
+//#define TIMER0_Interrupt 0
+//#if TIMER0_Usage==TIMER0_Interrupt
+//#include "../../../Common/Bit_Math.h"
+//void (*Timer0_CM_ptr_fn)(void)=Null;
+
+
+void TIMER0_voidInit(Timer_Prop *Timer1,NormalTimer_Prop*NormalT)
+{
+	if (Timer1->Mode ==Normal)
+	{
+		Clr_Bit(TCCR0,WGM00);
+		Clr_Bit(TCCR0,WGM01);
+		Calc_Preload_Value(Timer1, NormalT);
+		//TIMER_CLKSelect(clk_scaler,Clk);
+		//TCNT0=Preload_Value;
+	}
+
+ else if( Timer1->Mode==CTC )
+ {
+	 Clr_Bit(TCCR0,WGM00);
+	 Set_Bit(TCCR0,WGM01);
+	 Calc_CompMatch_Value(Timer1, NormalT);
+ }
+ else if( Timer1->Mode==FastPWM )
+ {
+	 Set_Bit(TCCR0,WGM00);
+	 Set_Bit(TCCR0,WGM01);
+ }
+ else if( Timer1->Mode==Phase_Correct )
+ {
+	 Set_Bit(TCCR0,WGM00);
+	 Clr_Bit(TCCR0,WGM01);
+ }
+
+}
+
+//	Set_Bit(SREG,I);
+//	Set_Bit(TIMSK,TOIE0);
+
+	//TIMER_CLKSelect(Timer1, Normal_Timer)
+	//}
+
+
+
+//
+//void TIMER10_voidSetCallBackfn(void(*ptr)(void))
+//{
+//	Timer0_CM_ptr_fn=ptr;
+//}
+
+//#endif
+
+
+
+
+
+
+
+
+
+
+
+f32 TIMER_CLKSelect(Timer_Prop *Timer_0 )
+
+//	if (clk_scaler==NoClk)
+//	{
+//		Clr_Bit(TCCR0_Bits,CS00);
+//		Clr_Bit(TCCR0_Bits,CS01);
+//		Clr_Bit(TCCR0_Bits,CS02);
+//		return 0;
+//	}
+{
+	 if (Timer_0->Clk_Scaler==Clk1)
+	{
+
+		Set_Bit(TCCR0,CS00);
+		Clr_Bit(TCCR0,CS01);
+		Clr_Bit(TCCR0,CS02);
+		//Normal_Timer->Prescld_Clk= (f32)Timer0->Clk/1;
+		return (Timer_0->Clk)/(f32)1;
+		//return 8;
+	}
+	else if (Timer_0->Clk_Scaler==Clk8)
+	{
+		Set_Bit(TCCR0,CS01);
+		Clr_Bit(TCCR0,CS00);
+		Clr_Bit(TCCR0,CS02);
+		return (Timer_0->Clk)/(f32)8;
+	}
+
+}
+//
+void Calc_Preload_Value(Timer_Prop *Timer_0,NormalTimer_Prop*Normal_Timer)
+{
+	//Normal_Timer->Prescld_Clk=TIMER_CLKSelect(Timer0);//Mhz
+	Normal_Timer->Tick_Time=1/Normal_Timer->Prescld_Clk;//uSec
+	//Normal_Timer->count=pow(2.0,Timer_0->Resolution);calculated by user
+	Normal_Timer->Time_OF=Normal_Timer->Tick_Time*Timer_0->Count_Max;//uSec
+	Normal_Timer->Req_Count=Timer_0->Req_Time/Normal_Timer->Time_OF;//req_time in uSec
+	Normal_Timer->PreLod_Value=(Normal_Timer->Req_Count-(u16)Normal_Timer->Req_Count)*Timer_0->Count_Max;
+	Normal_Timer->TCCR_Value=Timer_0->Count_Max-round(Normal_Timer->PreLod_Value);
+
+
+
+}
+void Calc_CompMatch_Value(Timer_Prop *Timer_0,NormalTimer_Prop*Normal_Timer)//give this func the desired overflow time to calc OCR value
+{
+	Calc_Preload_Value(Timer_0, Normal_Timer);
+	Normal_Timer->OCR_Value=Timer_0->New_TOF/Normal_Timer->Tick_Time; //both in uSec
+}
+#if (Timer_Usage==Interrupt)
+
+//void Timer_Enable(Timer_Prop *Timer_0)
+//{
+//	if(Timer_0->Mode ==Normal)
+//	{
+//		Set_Bit(SREG,7);
+//		Set_Bit(TIMSK,0);
+//		__vector_11();
+//	}
+//	else if(Timer_0->Mode ==CTC)
+//		{
+//			Set_Bit(SREG,7);
+//			Set_Bit(TIMSK,1);
+//			__vector_10();
+//		}
+//}
+
+#elif (Timer_Usage==Polling)
+//u8 Check_Flag(Timer_Prop *Timer_0)
+//{
+//	if(Timer_0->Mode ==Normal)
+//	{
+//		return Get_Bit(TIFR,0);
+//
+//	}
+//	else if(Timer_0->Mode ==CTC)
+//		{
+//		return Get_Bit(TIFR,1);
+//		}
+//}
+#endif
+
+
+void __vector_11(void)
+{
+
+	if (Timer_ptr_fn_Normal!=Null)
+	{
+		Timer_ptr_fn_Normal();
+	}
+}
+//
+void __vector_10(void)
+
+	{
+
+		if (Timer_ptr_fn_CM!=Null)
+		{
+			Timer_ptr_fn_CM();
+		}
+	}
+void TIMER0_voidSetCallBackfn(void(*ptr)(void))
+{
+	Timer_ptr_fn_Normal=ptr;
+	//Timer_ptr_fn_CM=ptr;
+}

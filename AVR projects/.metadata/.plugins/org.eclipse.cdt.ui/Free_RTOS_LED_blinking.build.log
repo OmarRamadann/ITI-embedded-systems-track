@@ -1,0 +1,43 @@
+23:23:06 **** Incremental Build of configuration Debug for project Free_RTOS_LED_blinking ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:15:1: warning: "NULL" redefined
+In file included from ../FreeRTOS.h:61,
+                 from ../main.c:13:
+f:\01- embedded systems avr tools-20230304t182915z-001\01- embedded systems avr tools\01- imt sdk\imt_sdk_win_64\imt_sdk_win_64\winavr\bin\../lib/gcc/avr/4.3.3/include/stddef.h:403:1: warning: this is the location of the previous definition
+../main.c:20: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: Free_RTOS_LED_blinking.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Free_RTOS_LED_blinking.map -mmcu=atmega32 -o "Free_RTOS_LED_blinking.elf"  ./DIO/DIO_program.o  ./croutine.o ./heap_1.o ./list.o ./main.o ./port.o ./queue.o ./tasks.o ./timers.o   
+Finished building target: Free_RTOS_LED_blinking.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Free_RTOS_LED_blinking.elf  >"Free_RTOS_LED_blinking.lss"
+Finished building: Free_RTOS_LED_blinking.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Free_RTOS_LED_blinking.elf  "Free_RTOS_LED_blinking.hex"
+Finished building: Free_RTOS_LED_blinking.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Free_RTOS_LED_blinking.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   11962 bytes (36.5% Full)
+(.text + .data + .bootloader)
+
+Data:        767 bytes (37.5% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+23:23:08 Build Finished (took 1s.906ms)
+

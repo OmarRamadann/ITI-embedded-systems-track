@@ -1,0 +1,45 @@
+15:36:15 **** Incremental Build of configuration Debug for project Counter_2Seg ****
+make all 
+Building file: ../APPLICATION/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APPLICATION/main.d" -MT"APPLICATION/main.o" -c -o "APPLICATION/main.o" "../APPLICATION/main.c"
+In file included from ../APPLICATION/main.c:10:
+f:/01- embedded systems avr tools-20230304t182915z-001/01- embedded systems avr tools/01- imt sdk/imt_sdk_win_64/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../APPLICATION/main.c:23: warning: return type of 'main' is not 'int'
+../APPLICATION/main.c: In function 'main':
+../APPLICATION/main.c:26: warning: unused variable 'Switch3'
+../APPLICATION/main.c:26: warning: unused variable 'Switch2'
+../APPLICATION/main.c:26: warning: unused variable 'Switch1'
+Finished building: ../APPLICATION/main.c
+ 
+Building target: Counter_2Seg.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Counter_2Seg.map -mmcu=atmega32 -o "Counter_2Seg.elf"  ./MCAL/DIO_program.o  ./APPLICATION/main.o   
+Finished building target: Counter_2Seg.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Counter_2Seg.elf  >"Counter_2Seg.lss"
+Finished building: Counter_2Seg.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Counter_2Seg.elf  "Counter_2Seg.hex"
+Finished building: Counter_2Seg.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Counter_2Seg.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    5620 bytes (17.2% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+15:36:17 Build Finished (took 1s.954ms)
+

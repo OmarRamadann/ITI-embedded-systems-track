@@ -1,0 +1,73 @@
+/*
+ * SevSeg_Private.h
+ *
+ *  Created on: Mar 23, 2023
+ *      Author: hisha
+ */
+
+#ifndef HAL_SEVSEG_SEVSEG_PRIVATE_H_
+#define HAL_SEVSEG_SEVSEG_PRIVATE_H_
+
+#define SevSeg_ArrSize  10
+/*CCathode -> Led On if write Zero*/
+#define SevSegCC_0      0x3F
+#define SevSegCC_1      0x06
+#define SevSegCC_2      0x5B
+#define SevSegCC_3      0x4F
+#define SevSegCC_4      0x66
+#define SevSegCC_5      0x6D
+#define SevSegCC_6      0x7D
+#define SevSegCC_7      0x07
+#define SevSegCC_8      0x7F
+#define SevSegCC_9      0x6F
+
+/*CAnode -> Led On if write One*/
+#define SevSegCA_0      0xC0
+#define SevSegCA_1      0xF9
+#define SevSegCA_2      0xA4
+#define SevSegCA_3      0xB0
+#define SevSegCA_4      0x99
+#define SevSegCA_5      0x92
+#define SevSegCA_6      0x82
+#define SevSegCA_7      0xF8
+#define SevSegCA_8      0x80
+#define SevSegCA_9      0x90
+
+typedef enum
+{
+InitializationError
+}SevErrState;
+typedef enum
+{
+	CCathode,
+	CAnode
+}Types;
+
+u8 SevSeg_Arr_CC[SevSeg_ArrSize]=
+{		SevSegCC_0 ,
+		SevSegCC_1 ,
+		SevSegCC_2 ,
+		SevSegCC_3 ,
+		SevSegCC_4 ,
+		SevSegCC_5 ,
+		SevSegCC_6 ,
+		SevSegCC_7 ,
+		SevSegCC_8 ,
+		SevSegCC_9
+};
+u8 SevSeg_Arr_CA[SevSeg_ArrSize]=
+{
+		SevSegCA_0,
+		SevSegCA_1,
+		SevSegCA_2,
+		SevSegCA_3,
+		SevSegCA_4,
+		SevSegCA_5,
+		SevSegCA_6,
+		SevSegCA_7,
+		SevSegCA_8,
+		SevSegCA_9
+};
+
+
+#endif /* HAL_SEVSEG_SEVSEG_PRIVATE_H_ */

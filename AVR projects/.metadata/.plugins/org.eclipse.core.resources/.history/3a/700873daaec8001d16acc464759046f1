@@ -1,0 +1,14 @@
+/*
+ * DIO_program.h
+ *
+ *  Created on: Mar 21, 2023
+ *      Author: hp
+ */
+//decleration of functions in c
+
+#ifndef MCAL_DIO_PROGRAM_H_
+#define MCAL_DIO_PROGRAM_H_
+
+DIO_err
+
+#endif /* MCAL_DIO_PROGRAM_H_ */

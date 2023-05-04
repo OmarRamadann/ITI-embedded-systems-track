@@ -1,0 +1,13 @@
+/*
+ * DIO_private.h
+ *
+ *  Created on: Mar 21, 2023
+ *      Author: hp
+ */
+//write any thing we dont other modules to use it
+//the member here (func.,object,..)specific for DIO model
+#ifndef MCAL_DIO_PRIVATE_H_
+#define MCAL_DIO_PRIVATE_H_
+//pins
+
+#endif /* MCAL_DIO_PRIVATE_H_ */

@@ -1,0 +1,21 @@
+/*
+ * main.c
+ *
+ *  Created on: Mar 21, 2023
+ *      Author: hp
+ */
+
+#include<avr/io.h>
+#include<util/delay.h>
+
+
+void main (void)
+{
+DDRA=0xff;
+PORTA=0x0f;
+while (1){
+ PORTA ^=0xFF;
+ _delay_ms(100);
+
+	}
+}

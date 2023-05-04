@@ -1,0 +1,10 @@
+14:36:27 **** Incremental Build of configuration Debug for project Motor_App ****
+make all 
+Building target: Motor_App.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Motor_App.map -mmcu=atmega32 -o "Motor_App.elf"   
+f:/01- embedded systems avr tools-20230304t182915z-001/01- embedded systems avr tools/01- imt sdk/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o:(.init9+0x0): undefined reference to `main'
+make: *** [Motor_App.elf] Error 1
+
+14:36:27 Build Finished (took 530ms)
+

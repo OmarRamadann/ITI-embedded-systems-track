@@ -1,0 +1,33 @@
+/*
+ * DIO_register.h
+ *
+ *  Created on: Mar 21, 2023
+ *      Author: hp
+ */
+//macros for addresses
+#ifndef MCAL_DIO_REGISTER_H_
+#define MCAL_DIO_REGISTER_H_
+
+#define ddra		(*(volatile u8*)0x3A)
+#define ddrb		(*(volatile u8*)0x37)
+#define ddrc		(*(volatile u8*)0x34)
+#define ddrd		(*(volatile u8*)0x31)
+
+#define porta		(*(volatile u8*)0x3B)
+#define portb		(*(volatile u8*)0x38)
+#define portc		(*(volatile u8*)0x35)
+#define portd		(*(volatile u8*)0x32)
+
+
+#define pina		(*(volatile u8*)0x39)
+#define pinb		(*(volatile u8*)0x36)
+#define pinc		(*(volatile u8*)0x33)
+#define pind		(*(volatile u8*)0x30)
+
+
+//groups
+#define groupa  0
+#define groupb  1
+#define groupc  2
+#define groupd  3
+#endif /* MCAL_DIO_REGISTER_H_ */

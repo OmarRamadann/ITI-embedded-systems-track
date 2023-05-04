@@ -1,0 +1,52 @@
+00:47:31 **** Incremental Build of configuration Debug for project SevSeg_driver ****
+make all 
+Building file: ../MCAL/DIO_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO_program.d" -MT"MCAL/DIO_program.o" -c -o "MCAL/DIO_program.o" "../MCAL/DIO_program.c"
+Finished building: ../MCAL/DIO_program.c
+ 
+Building file: ../HAL/SevSeg_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"HAL/SevSeg_program.d" -MT"HAL/SevSeg_program.o" -c -o "HAL/SevSeg_program.o" "../HAL/SevSeg_program.c"
+../HAL/SevSeg_program.c: In function 'SevSeg_SevErrStateDisplayRange':
+../HAL/SevSeg_program.c:42: warning: control reaches end of non-void function
+../HAL/SevSeg_program.c: In function 'SevSeg_SevErrStateDisplayMax':
+../HAL/SevSeg_program.c:49: warning: control reaches end of non-void function
+Finished building: ../HAL/SevSeg_program.c
+ 
+Building file: ../APPLICATION/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APPLICATION/main.d" -MT"APPLICATION/main.o" -c -o "APPLICATION/main.o" "../APPLICATION/main.c"
+../APPLICATION/main.c:10: warning: return type of 'main' is not 'int'
+../APPLICATION/main.c: In function 'main':
+../APPLICATION/main.c:18: warning: unused variable 'Result3'
+../APPLICATION/main.c:13: warning: unused variable 'Result1'
+Finished building: ../APPLICATION/main.c
+ 
+Building target: SevSeg_driver.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,SevSeg_driver.map -mmcu=atmega32 -o "SevSeg_driver.elf"  ./MCAL/DIO_program.o  ./HAL/SevSeg_program.o  ./APPLICATION/main.o   
+Finished building target: SevSeg_driver.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S SevSeg_driver.elf  >"SevSeg_driver.lss"
+Finished building: SevSeg_driver.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 SevSeg_driver.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    2470 bytes (7.5% Full)
+(.text + .data + .bootloader)
+
+Data:         20 bytes (1.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+00:47:34 Build Finished (took 2s.654ms)
+

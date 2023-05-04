@@ -1,0 +1,20 @@
+01:03:44 **** Incremental Build of configuration Debug for project switch_LEDs_animation ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 switch_LEDs_animation.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6012 bytes (18.3% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+01:03:44 Build Finished (took 455ms)
+

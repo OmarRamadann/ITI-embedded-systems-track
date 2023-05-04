@@ -1,0 +1,74 @@
+#include "../MCAL/DIO/DIO_interface.h"
+#include "../MCAL/DIO/DIO_register.h"
+#include "../MCAL/Timers/Timer0/Timer0_register.h"
+#include "../Common/definitions.h"
+#include "../Common/Bit_Math.h"
+#include "../Common/STD_types.h"
+
+//#include "../MCAL/Timers/Timer0/Timer0_interface.h"
+
+//Timer_Prop *timer1={Normal,8,8,256,1000000,0};
+//NormalTimer_Prop *normal1={0,0,0,0,0,0,192,0};
+void __vector_10(void)__attribute__((signal));
+
+void TIMER0_voidSetCallBackfn(void(*ptr)(void));
+void (*Timer2_ptr_fn)(void)=Null;
+void Isr_Tog_Led(void);
+void main()
+{
+
+
+
+	Set_Bit(SREG,7);
+	Clr_Bit(TCCR0,3);
+		Set_Bit(TCCR0,6);
+		Set_Bit(TCCR0,0);
+			Set_Bit(TCCR0,1);
+			Clr_Bit(TCCR0,2);
+			Set_Bit(TIMSK,0);
+			TIMER0_voidSetCallBackfn(Isr_Tog_Led());
+
+//	TIMER0_voidInit(timer1, normal1);
+//	Timer_Enable(timer1);
+//	Timer2_ptr_fn=Isr_Tog_Led;
+//	TIMER0_voidSetCallBackfn(Timer2_ptr_fn);
+//	TCNT0=normal1->TCNT_First_Value;
+
+}
+
+
+void Isr_Tog_Led(void)
+//ISR(TIMER0_OVF_vect)
+{
+	static u16 counter;
+	counter++;
+	if (counter==3907)
+//	if (counter==5)
+	{
+		TCNT0=192;
+//		TCNT0=normal1->TCNT_Value;
+	Tog_Bit(portc,7);
+	//Led_LedErrStateTurnOn(Led1);
+//		DIO_ErrStateSetPinValue(DIO_GroupC, Pin3, DIO_Low);
+	counter=0;
+	}
+//	if (counter==20)
+//	{
+//		counter=0;
+//	}
+}
+
+
+void TIMER0_voidSetCallBackfn(void(*ptr)(void))
+{
+	Timer2_ptr_fn=ptr;
+}
+void __vector_11(void)
+
+{
+
+	if (Timer2_ptr_fn!=Null)
+	{
+		Timer2_ptr_fn();
+	}
+}

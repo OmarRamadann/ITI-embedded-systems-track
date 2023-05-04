@@ -1,0 +1,33 @@
+/*
+
+ * main.c
+ *
+ *  Created on: Mar 23, 2023
+ *      Author: hp
+ */
+#include "../MCAL/DIO_program.h"
+#include"../common/definitions.h"
+
+#define SevSegCA_0   0x3F
+#define SevSegCA_1   0x06
+#define SevSegCA_2   0x5B
+#define SevSegCA_3   0x4F
+#define SevSegCA_4   0x66
+#define SevSegCA_5   0x6D
+#define SevSegCA_6   0x7D
+#define SevSegCA_7   0x07
+#define SevSegCA_8   0x7F
+#define SevSegCA_9   0x6F
+void main()
+{
+ErrState Res;
+Res=DIO_ErrStateSetGroupDirection(DIO_GroupC,0xff);
+while(1)
+{
+	if (Res==NoError)
+	{
+		DIO_ErrStateSetGroupValue(DIO_GroupC, SevSegCA_3);
+	}
+}
+
+}

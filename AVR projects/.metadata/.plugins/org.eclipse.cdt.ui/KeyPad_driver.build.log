@@ -1,0 +1,6 @@
+19:42:36 **** Incremental Build of configuration Debug for project KeyPad_driver ****
+make all 
+make: *** No rule to make target `MCAL/DIO_program.o', needed by `KeyPad_driver.elf'.  Stop.
+
+19:42:36 Build Finished (took 328ms)
+

@@ -1,0 +1,20 @@
+15:15:39 **** Incremental Build of configuration Debug for project SPI_2ndMC ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 SPI_2ndMC.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   12322 bytes (37.6% Full)
+(.text + .data + .bootloader)
+
+Data:        315 bytes (15.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+15:15:40 Build Finished (took 774ms)
+

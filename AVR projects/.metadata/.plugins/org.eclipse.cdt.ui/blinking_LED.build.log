@@ -1,0 +1,19 @@
+19:51:50 **** Incremental Build of configuration Debug for project blinking_LED ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:9:
+f:/01- embedded systems avr tools-20230304t182915z-001/01- embedded systems avr tools/01- imt sdk/imt_sdk_win_64/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:12: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:15: error: 'ddra' undeclared (first use in this function)
+../main.c:15: error: (Each undeclared identifier is reported only once
+../main.c:15: error: for each function it appears in.)
+../main.c:16: error: 'porta' undeclared (first use in this function)
+../main.c:20: warning: unused variable 'y'
+../main.c:19: warning: unused variable 'x'
+make: *** [main.o] Error 1
+
+19:51:50 Build Finished (took 594ms)
+

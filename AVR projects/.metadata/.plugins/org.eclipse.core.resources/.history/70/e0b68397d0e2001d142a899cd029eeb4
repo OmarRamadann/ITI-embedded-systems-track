@@ -1,0 +1,16 @@
+/*
+ * Timer0_config.h
+ *
+ *  Created on: Apr 1, 2023
+ *      Author: hp
+ */
+
+#ifndef MCAL_TIMERS_TIMER0_TIMER0_CONFIG_H_
+#define MCAL_TIMERS_TIMER0_TIMER0_CONFIG_H_
+//#include "Timer0_interface.h"
+#include "Timer0_private.h"
+#define Timer_Usage     ctc
+#define Null 		(void*)(0x00)
+
+
+#endif /* MCAL_TIMERS_TIMER0_TIMER0_CONFIG_H_ */

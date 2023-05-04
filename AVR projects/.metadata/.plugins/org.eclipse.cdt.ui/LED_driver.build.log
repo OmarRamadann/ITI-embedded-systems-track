@@ -1,0 +1,54 @@
+00:47:27 **** Incremental Build of configuration Debug for project LED_driver ****
+make all 
+Building file: ../MCAL/DIO_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO_program.d" -MT"MCAL/DIO_program.o" -c -o "MCAL/DIO_program.o" "../MCAL/DIO_program.c"
+Finished building: ../MCAL/DIO_program.c
+ 
+Building file: ../HAL/Led_Program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"HAL/Led_Program.d" -MT"HAL/Led_Program.o" -c -o "HAL/Led_Program.o" "../HAL/Led_Program.c"
+../HAL/Led_Program.c: In function 'Led_LedErrStateTurnOn':
+../HAL/Led_Program.c:18: warning: unused variable 'Res2'
+../HAL/Led_Program.c:27: warning: unused variable 'Res2'
+../HAL/Led_Program.c: In function 'Led_LedErrStateTurnOff':
+../HAL/Led_Program.c:45: warning: unused variable 'Res2'
+../HAL/Led_Program.c:54: warning: unused variable 'Res2'
+Finished building: ../HAL/Led_Program.c
+ 
+Building file: ../APPLICATION/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APPLICATION/main.d" -MT"APPLICATION/main.o" -c -o "APPLICATION/main.o" "../APPLICATION/main.c"
+../APPLICATION/main.c:10: warning: return type of 'main' is not 'int'
+../APPLICATION/main.c: In function 'main':
+../APPLICATION/main.c:18: warning: unused variable 'Result3'
+../APPLICATION/main.c:13: warning: unused variable 'Result1'
+Finished building: ../APPLICATION/main.c
+ 
+Building target: LED_driver.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,LED_driver.map -mmcu=atmega32 -o "LED_driver.elf"  ./MCAL/DIO_program.o  ./HAL/Led_Program.o  ./APPLICATION/main.o   
+Finished building target: LED_driver.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S LED_driver.elf  >"LED_driver.lss"
+Finished building: LED_driver.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 LED_driver.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    2454 bytes (7.5% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+00:47:30 Build Finished (took 3s.15ms)
+

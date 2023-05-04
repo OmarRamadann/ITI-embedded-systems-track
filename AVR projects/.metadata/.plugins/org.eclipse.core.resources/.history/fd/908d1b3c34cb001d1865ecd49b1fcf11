@@ -1,0 +1,14 @@
+/*
+ * SevSeg_program.c
+ *
+ *  Created on: Mar 23, 2023
+ *      Author: hisha
+ */
+#include "../../Comman/definition.h"
+#include "../../MCAL/DIO/DIO_Interface.h"
+#include "SevSeg_Interface.h"
+
+SevErrState    SevSeg_SevErrStateSetNumber(u8 Copy_Number , SevSeg_info * SevenSegment1)//if we add more than one SevSeg
+{
+	DIO_ErrStateSetGroupDirection(SevenSegment1->Sev, Copy_DirectionState)
+}

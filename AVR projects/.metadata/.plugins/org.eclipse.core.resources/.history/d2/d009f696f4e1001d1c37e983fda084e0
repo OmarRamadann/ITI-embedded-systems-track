@@ -1,0 +1,14 @@
+#ifndef HAL_LCD_LCD_INTERFACE_H_
+#define HAL_LCD_LCD_INTERFACE_H_
+#include"LCD_Privet.h"
+void (*Timer_ptr_fn_Normal)(void)=Null;
+void Lcd_VoidSendChar(u8 Copy_Char,Lcd_Info *Lcd);
+void Lcd_VoidSendCommand (u8 Copy_Command,Lcd_Info *Lcd);
+void Lcd_VoidInit(Lcd_Info *Lcd);
+void Lcd_VoidSendString(u8*Address_String, Lcd_Info* Lcd);
+LcdError Lcd_VoidGoXY(Lcd_Info * Lcd ,u8 Copy_XLocation ,u8 Copy_YLocation);
+void Lcd_VoidSendNumber(u8 Copy_Number,Lcd_Info *Lcd);//to do
+void Lcd_VoidStoreSpecialCharacter(u16( Copy_SpecChar[][7]),CGRAM_Write_Addr write_Addr,u8 No_of_Characters,Lcd_Info*Lcd);//to do(get char to be stored,get address)
+void Lcd_DisplaySpecialCharacter(CGRAM_Read_Addr read,u8 Select_Char,Lcd_Info*Lcd);//to do (get address )
+#endif
+

@@ -1,0 +1,99 @@
+/*
+ * Timer0_private.h
+ *
+ *  Created on: Apr 1, 2023
+ *      Author: hp
+ */
+
+#ifndef MCAL_TIMERS_TIMER0_TIMER0_PRIVATE_H_
+#define MCAL_TIMERS_TIMER0_TIMER0_PRIVATE_H_
+#include "../../../Common/STD_types.h"
+#include "../../../Common/Bit_Math.h"
+#include "Timer0_config.h"
+
+typedef enum
+{
+	Polling,
+	Interrupt
+}Usage;
+
+//typedef enum
+//{
+//	I=7
+//}SREG_Bits;
+typedef enum
+{
+	Normal,
+	Phase_Correct,
+	CTC,
+	FastPWM
+}Mode;
+
+typedef enum
+{
+	Mhz8,
+	Mhz12
+}Clk_time;
+typedef enum
+{
+	NoClk,
+	Clk1,
+	Clk8,
+	Clk64,
+	Clk256,
+	Clk1024
+}Clk_Select;
+typedef enum
+{
+	CS00,
+	CS01,
+	CS02,
+	WGM01,
+	COM00,
+	COM01,
+	WGM00,
+	FOC0
+}TCCR0_Bits;
+
+typedef enum
+{
+TOIE0,
+OCIE
+}TIMSK_Bits;
+
+typedef enum
+{
+	TOV0
+}TIFR_Bits;
+typedef struct
+{
+	f32 Prescld_Clk;
+	f32 Tick_Time;
+	//f64 count;//max. counts
+	u16 Time_OF;
+	u8 Req_Count;
+	u8 PreLod_Value;
+	u8 TCCR_Value;
+	u8 OCR_Value;
+}NormalTimer_Prop;
+typedef struct
+{
+	Mode Mode;
+	u8 Clk;
+	u8 Clk_Scaler;
+	//f32 Resolution;// ex:8 bits
+	f32 Count_Max;// ex:256 counts
+	f32 Req_Time;
+	u16 New_TOF;
+
+}Timer_Prop;
+
+f32 TIMER_CLKSelect(Timer_Prop *ptr );
+void Calc_Preload_Value(Timer_Prop *Timer_0,NormalTimer_Prop*Normal_Timer);
+void Calc_CompMatch_Value(Timer_Prop *Timer_0,NormalTimer_Prop*Normal_Timer);
+//void (*Timer_ptr_fn_Normal)(void)=Null;
+//void (*Timer_ptr_fn_CM)(void)=Null;
+void __vector_11(void)__attribute__((signal));
+
+
+#endif /* MCAL_TIMERS_TIMER0_TIMER0_PRIVATE_H_ */

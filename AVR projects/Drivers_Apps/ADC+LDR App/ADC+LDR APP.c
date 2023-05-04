@@ -1,0 +1,48 @@
+#define NULL 0
+#define GIFR   *((volatile u8 *)0x5A)
+#define GICR   *((volatile u8 *)0x5B)
+#define SREG   *((volatile u8 *)0x5F)
+///////
+#define ADMUX   *((volatile u8 *)0x27)
+#define ADCSRA   *((volatile u8 *)0x26)
+#define ADCL   *((volatile u8 *)0x24)
+#define ADCH   *((volatile u8 *)0x25)
+#define SFIOR   *((volatile u8 *)0x50)
+
+
+
+
+int main()
+{
+/vcc ref
+SET_BIT(ADMUX,6);
+CLR_BIT(ADMUX,7);
+
+CLR_BIT(ADMUX,5);
+CLR_BIT(ADMUX,0);
+CLR_BIT(ADMUX,1);
+CLR_BIT(ADMUX,2);
+CLR_BIT(ADMUX,3);
+CLR_BIT(ADMUX,4);
+SET_BIT(ADCSRA,7);//enable ADC
+SET_BIT(ADCSRA,6);//STRAT CONVERSION
+
+// clk/128
+SET_BIT(ADCSRA,0);
+SET_BIT(ADCSRA,1);
+SET_BIT(ADCSRA,2);
+
+//free runnig
+CLR_BIT(SFIOR,5);
+CLR_BIT(SFIOR,6);
+CLR_BIT(SFIOR,7);
+
+//check flag
+
+u8 flag=GET_BIT(ADCSRA,4);
+while(flag==0);
+SET_BIT(ADCSRA,4);
+SET_BIT(ADCSRA,6);
+return ADCL+(ADCH<<8);
+
+}
