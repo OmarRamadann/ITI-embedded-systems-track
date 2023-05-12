@@ -1,0 +1,90 @@
+************************************* Invoked: Tue Apr 18 21:09:36 2023
+[0] Arguments: C:\Users\hp\Downloads\msys2-x86_64-20230318.exe
+[689] Operations sanity check succeeded.
+[2418] Using metadata cache from "C:/Users/hp/AppData/Local/cache\\qt-installer-framework\\d75f1c19-3379-3717-ae8d-1404b51494a9"
+[2418] Found 0 cached items.
+[2418] Language: en-US
+[4026] Loaded control script ":/metadata/installer-config/control_js.js"
+[4026] Using control script: ":/metadata/installer-config/control_js.js"
+[13881] Fetching latest update information...
+[13909] Loading component scripts...
+[16189] backup  operation: Mkdir
+[16189] 	- arguments: C:/msys64
+[16189] Done
+[16189] perform  operation: Mkdir
+[16189] 	- arguments: C:/msys64
+[16237] Done
+[16239] Preparing the installation...
+[16239] Install size: 1 components
+[16254] Preparing to unpack components...
+[16258] backup com.msys2.root concurrent operation: Extract
+[16258] 	- arguments: installer://com.msys2.root/20230318msys64.7z, C:/msys64
+[16259] Started
+[18922] Unpacking components...
+[18924] perform com.msys2.root concurrent operation: Extract
+[18924] 	- arguments: installer://com.msys2.root/20230318msys64.7z, C:/msys64
+[18924] Started
+[249902] Installing component MSYS2
+[249904] backup com.msys2.root operation: CreateShortcut
+[249904] 	- arguments: C:/msys64/mingw32.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 MINGW32.lnk, iconPath=C:/msys64/mingw32.exe
+[249904] Done
+[249905] perform com.msys2.root operation: CreateShortcut
+[249905] 	- arguments: C:/msys64/mingw32.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 MINGW32.lnk
+[250053] Done
+[250054] backup com.msys2.root operation: CreateShortcut
+[250054] 	- arguments: C:/msys64/mingw64.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 MINGW64.lnk, iconPath=C:/msys64/mingw64.exe
+[250054] Done
+[250054] perform com.msys2.root operation: CreateShortcut
+[250054] 	- arguments: C:/msys64/mingw64.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 MINGW64.lnk
+[250092] Done
+[250092] backup com.msys2.root operation: CreateShortcut
+[250092] 	- arguments: C:/msys64/ucrt64.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 UCRT64.lnk, iconPath=C:/msys64/ucrt64.exe
+[250092] Done
+[250093] perform com.msys2.root operation: CreateShortcut
+[250093] 	- arguments: C:/msys64/ucrt64.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 UCRT64.lnk
+[250145] Done
+[250146] backup com.msys2.root operation: CreateShortcut
+[250146] 	- arguments: C:/msys64/clang64.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 CLANG64.lnk, iconPath=C:/msys64/clang64.exe
+[250146] Done
+[250146] perform com.msys2.root operation: CreateShortcut
+[250147] 	- arguments: C:/msys64/clang64.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 CLANG64.lnk
+[250180] Done
+[250181] backup com.msys2.root operation: CreateShortcut
+[250181] 	- arguments: C:/msys64/clangarm64.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 CLANGARM64.lnk, iconPath=C:/msys64/clangarm64.exe
+[250181] Done
+[250181] perform com.msys2.root operation: CreateShortcut
+[250181] 	- arguments: C:/msys64/clangarm64.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 CLANGARM64.lnk
+[250329] Done
+[250330] backup com.msys2.root operation: CreateShortcut
+[250330] 	- arguments: C:/msys64/msys2.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 MSYS.lnk, iconPath=C:/msys64/msys2.exe
+[250330] Done
+[250330] perform com.msys2.root operation: CreateShortcut
+[250330] 	- arguments: C:/msys64/msys2.exe, C:\Users\hp\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2/MSYS2 MSYS.lnk
+[250363] Done
+[250363] backup com.msys2.root operation: Execute
+[250364] 	- arguments: C:/msys64\usr\bin\bash.exe, --login, -c, exit
+[250364] Done
+[250364] perform com.msys2.root operation: Execute
+[250365] 	- arguments: C:/msys64\usr\bin\bash.exe, --login, -c, exit
+[250526] C:/msys64\\usr\\bin\\bash.exe" started, arguments: "--login -c exit
+[252796] Copying skeleton files.\nThese files are for the users to personalise their msys2 experience.\n\nThey will never be overwritten nor automatically updated.\n\n'./.bashrc' -> '/home/hp/.bashrc'\n'./.bash_logout' -> '/home/hp/.bash_logout'\n
+[253111] './.bash_profile' -> '/home/hp/.bash_profile'\n
+[253143] './.profile' -> '/home/hp/.profile'\n
+[253779] 'C:\\WINDOWS\\system32\\drivers\\etc\\hosts' -> '/etc/hosts'\n'C:\\WINDOWS\\system32\\drivers\\etc\\protocol' -> '/etc/protocols'\n
+[254093] 'C:\\WINDOWS\\system32\\drivers\\etc\\services' -> '/etc/services'\n
+[254408] 'C:\\WINDOWS\\system32\\drivers\\etc\\networks' -> '/etc/networks'\n
+[258539] ==> Generating pacman master key. This may take some time.\n
+[260831] ==> Updating trust database...\n
+[261466] ==> Appending keys from msys2.gpg...\n
+[264604] ==> Locally signing trusted keys in keyring...\n
+[269746]   -> Locally signed 5 keys.\n==> Importing owner trust values...\n
+[270379] ==> Disabling revoked keys in keyring...\n
+[271515]   -> Disabled 4 keys.\n==> Updating trust database...\n
+[305732] \x1B[H\x1B[2J\x1B[3J
+[305732] Done
+[313214] Writing maintenance tool: "C:/msys64/uninstall.exe.new"
+[313215] Writing maintenance tool.
+[313536] Wrote permissions for maintenance tool.
+[313918] Maintenance tool hard restart: false.
+[313925] Installation finished!
+[326655] starting "C:/msys64/ucrt64.exe" ()
