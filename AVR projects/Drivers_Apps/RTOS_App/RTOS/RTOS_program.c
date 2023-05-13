@@ -1,0 +1,58 @@
+/*
+ * RTOS_program.c
+ *
+ *  Created on: Apr 15, 2023
+ *      Author: hp
+ */
+#include "RTOS_private.h"
+#include "RTOS_config.h"
+#include "../MCAL/Timers/Timer0/Timer0_interface.h"
+//#include "Timer0/Timer0_register.h"
+//Timer_Prop timer1={CTC,8,Clk64,256,1000000,1000};
+//ModesTimer_Prop normal1;
+ void scheduler(void);
+task_type CreatTask (u8 periority,u16 periodicity,void (*taskPtrFunc)(void))
+{
+task_type Task;
+Task.priority=periority;
+Task.periodicity=periodicity;
+Task.taskFUNC=taskPtrFunc;
+System_Task[periority]=Task;
+//return Task;
+}
+
+
+void RTOS_voidStart(Timer_Prop *Timer1,ModesTimer_Prop *timer)
+{
+//	Set_Bit(SREG,7);
+	//TIMER0_voidInit(Copy_mode, clk_scaler, Preload_Value)
+//	TIMER0_voidINTEnable();
+//	TIMER10_voidSetCallBackfn(scheduler);
+	TIMER0_voidInit(Timer1, timer);
+	Timer_Enable(Timer1);
+	TIMER0_voidSetCallBackfn(&scheduler);
+
+}
+
+ void scheduler (void)
+{
+static u16 SystemTickCounter;
+SystemTickCounter++;
+for (u8 taskCounter=0;taskCounter<Task_Num;taskCounter++)
+{
+	if (SystemTickCounter%(System_Task[taskCounter].periodicity)==0)
+	{
+//		static u16 counter;
+//		counter++;
+//		if(counter==1000)
+//		{
+		if (System_Task[taskCounter].taskFUNC!=Null)
+		{
+		System_Task[taskCounter].taskFUNC();
+		}
+//		counter=0;
+//		}
+	}
+}
+
+}
